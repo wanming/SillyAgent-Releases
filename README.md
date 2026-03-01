@@ -6,6 +6,18 @@ Download the latest version of SillyAgent.
 
 ## Changelog
 
+### v0.0.2
+
+- feat: LLM-based stagnation evaluation and agent scratchpad
+- fix: add "declare complete" option to stagnation warning
+- feat: enhance settings modal and fix skills tab scroll
+- style: UI/UX improvements and visual updates
+- feat: refine UI with new theme and polished components
+
+- [Download SillyAgent-0.0.2-arm64.dmg](https://github.com/wanming/SillyAgent-Releases/releases/download/v0.0.2/SillyAgent-0.0.2-arm64.dmg)
+
+---
+
 ### v0.0.1
 
 - fix: tag source repo to generate correct per-release changelog
