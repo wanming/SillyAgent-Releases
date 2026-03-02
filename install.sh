@@ -20,18 +20,18 @@ trap cleanup EXIT
 # Check macOS
 [ "$(uname)" = "Darwin" ] || error "This installer only works on macOS."
 
-# Fetch latest release info
+# Resolve latest version via redirect (avoids GitHub API rate limits)
 info "Checking latest version..."
-RELEASE_JSON=$(curl -fsSL "https://api.github.com/repos/${REPO}/releases/latest") \
-  || error "Failed to fetch release info. Check your network connection."
+LATEST_URL=$(curl -fsSIL -o /dev/null -w '%{url_effective}' \
+  "https://github.com/${REPO}/releases/latest" 2>/dev/null) \
+  || error "Failed to check latest version. Check your network connection."
 
-TAG=$(echo "$RELEASE_JSON" | grep '"tag_name"' | head -1 | sed 's/.*: *"\(.*\)".*/\1/')
-DMG_URL=$(echo "$RELEASE_JSON" | grep '"browser_download_url"' | grep '\.dmg"' | head -1 | sed 's/.*: *"\(.*\)".*/\1/')
+TAG=$(echo "$LATEST_URL" | grep -o '[^/]*$')
+[ -n "$TAG" ] || error "Could not determine latest version."
 
-[ -n "$TAG" ]     || error "Could not determine latest version."
-[ -n "$DMG_URL" ] || error "Could not find DMG download URL."
-
-DMG_NAME=$(basename "$DMG_URL")
+VERSION="${TAG#v}"
+DMG_NAME="${APP_NAME}-${VERSION}-arm64.dmg"
+DMG_URL="https://github.com/${REPO}/releases/download/${TAG}/${DMG_NAME}"
 info "Latest version: ${TAG} (${DMG_NAME})"
 
 # Download
