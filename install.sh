@@ -69,6 +69,5 @@ cp -R "$APP_PATH" "${INSTALL_DIR}/" \
 # Remove quarantine
 xattr -cr "${INSTALL_DIR}/${APP_NAME}.app" 2>/dev/null || true
 
-ok "${APP_NAME} ${TAG} installed to ${INSTALL_DIR}/${APP_NAME}.app"
-echo ""
-info "To launch: open -a ${APP_NAME}"
+ok "${APP_NAME} ${TAG} installed successfully!"
+open -a "$APP_NAME"
