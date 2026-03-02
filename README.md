@@ -6,6 +6,15 @@ Download the latest version of SillyAgent.
 
 ## Changelog
 
+### v0.0.4
+
+- fix: add missing Vision, CoreML, pysqlite3 and all new app modules to PyInstaller build
+- fix: use redirect instead of GitHub API for update check
+
+- [Download SillyAgent-0.0.4-arm64.dmg](https://github.com/wanming/SillyAgent-Releases/releases/download/v0.0.4/SillyAgent-0.0.4-arm64.dmg)
+
+---
+
 ### v0.0.3
 
 - fix: add missing hiddenimports to PyInstaller spec
