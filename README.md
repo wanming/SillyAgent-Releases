@@ -6,6 +6,14 @@ Download the latest version of SillyAgent.
 
 ## Changelog
 
+### v0.0.3
+
+- fix: add missing hiddenimports to PyInstaller spec
+
+- [Download SillyAgent-0.0.3-arm64.dmg](https://github.com/wanming/SillyAgent-Releases/releases/download/v0.0.3/SillyAgent-0.0.3-arm64.dmg)
+
+---
+
 ### v0.0.2
 
 - feat: LLM-based stagnation evaluation and agent scratchpad
