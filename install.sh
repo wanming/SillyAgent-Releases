@@ -44,8 +44,10 @@ curl -fSL --progress-bar -o "$DMG_PATH" "$DMG_URL" \
 
 # Mount DMG
 info "Installing ${APP_NAME}..."
-MOUNT_POINT=$(hdiutil attach "$DMG_PATH" -nobrowse -quiet | tail -1 | awk '{print $NF}')
-[ -d "$MOUNT_POINT" ] || error "Failed to mount DMG."
+MOUNT_OUTPUT=$(hdiutil attach "$DMG_PATH" -nobrowse 2>&1) \
+  || error "Failed to mount DMG."
+MOUNT_POINT=$(echo "$MOUNT_OUTPUT" | grep '/Volumes/' | sed 's/.*\/Volumes/\/Volumes/' | head -1)
+[ -d "$MOUNT_POINT" ] || error "Failed to find mount point."
 
 # Find and copy .app
 APP_PATH=$(find "$MOUNT_POINT" -maxdepth 1 -name "*.app" -type d | head -1)
