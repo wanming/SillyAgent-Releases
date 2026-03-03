@@ -6,6 +6,16 @@ Download the latest version of SillyAgent.
 
 ## Changelog
 
+### v0.0.5
+
+- perf: run post-completion memory/knowledge extraction in background
+- fix: prevent Enter key submit during IME composition
+- fix: codesign app with correct identifier for macOS permissions
+
+- [Download SillyAgent-0.0.5-arm64.dmg](https://github.com/wanming/SillyAgent-Releases/releases/download/v0.0.5/SillyAgent-0.0.5-arm64.dmg)
+
+---
+
 ### v0.0.4
 
 - fix: add missing Vision, CoreML, pysqlite3 and all new app modules to PyInstaller build
